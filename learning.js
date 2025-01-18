@@ -1,56 +1,27 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // 模拟数据
-    const learningData = {
-        orders: [
-            {
-                id: 'ORDER2024021501',
-                title: 'Vue.js 3.0完整教程',
-                price: '299.00',
-                date: '2024-02-15',
-                status: '已完成'
-            },
-            {
-                id: 'ORDER2024021502',
-                title: 'Python编程从入门到实践',
-                price: '199.00',
-                date: '2024-02-14',
-                status: '已完成'
-            }
-        ],
-        downloads: [
-            {
-                id: 1,
-                title: 'React项目源码',
-                size: '125MB',
-                date: '2024-02-14',
-                type: '项目源码'
-            },
-            {
-                id: 2,
-                title: 'Java核心技术PDF',
-                size: '35MB',
-                date: '2024-02-13',
-                type: '电子书'
-            }
-        ]
-    };
-
+   
     // 初始化页面
     function initPage() {
+        // 检查用户是否登录
+        const userInfo = JSON.parse(localStorage.getItem('currentUser'));
+        if (!userInfo) {
+            window.location.href = 'login.html';
+            return;
+        }
+
         generateRandomAvatar();
-        renderOrders(learningData.orders);
+        displayUserInfo();
+        const orders = JSON.parse(localStorage.getItem('purchaseHistory')) || [];
+        renderOrders(orders);
         bindTabEvents();
         initSearchFunction();
+        initLogout(); // 初始化登出功能
     }
 
     // 生成随机头像
     function generateRandomAvatar() {
-        // 生成随机种子
         const seed = Math.random().toString(36).substring(7);
-        // 使用 DiceBear API 生成头像
         const avatarUrl = `https://api.dicebear.com/7.x/avataaars/svg?seed=${seed}`;
-        
-        // 设置头像
         const avatarImg = document.getElementById('userAvatar');
         if (avatarImg) {
             avatarImg.src = avatarUrl;
@@ -58,100 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // 渲染订单记录
-    function renderOrders() {
-        const ordersList = document.querySelector('.orders-list');
-        ordersList.innerHTML = learningData.orders.map(order => `
-            <div class="order-item">
-                <div class="order-info">
-                    <div class="order-header">
-                        <span class="order-id">订单号：${order.id}</span>
-                        <span class="order-status ${order.status === '已完成' ? 'completed' : ''}">${order.status}</span>
-                    </div>
-                    <h3 class="order-title">${order.title}</h3>
-                    <div class="order-meta">
-                        <span class="order-price">￥${order.price}</span>
-                        <span class="order-date">${order.date}</span>
-                    </div>
-                </div>
-            </div>
-        `).join('');
-    }
-
-    // 渲染下载记录
-    function renderDownloads() {
-        const downloadsList = document.querySelector('.downloads-list');
-        downloadsList.innerHTML = learningData.downloads.map(download => `
-            <div class="download-item">
-                <div class="download-info">
-                    <h3 class="download-title">${download.title}</h3>
-                    <div class="download-meta">
-                        <span class="download-type">${download.type}</span>
-                        <span class="download-size">${download.size}</span>
-                        <span class="download-date">${download.date}</span>
-                    </div>
-                </div>
-                <button class="redownload-btn">重新下载</button>
-            </div>
-        `).join('');
-    }
-
-    // 绑定标签页切换事件
-    function bindTabEvents() {
-        const menuItems = document.querySelectorAll('.menu-list li');
-        const tabContents = document.querySelectorAll('.tab-content');
-
-        menuItems.forEach(item => {
-            item.addEventListener('click', () => {
-                // 移除所有活动状态
-                menuItems.forEach(i => i.classList.remove('active'));
-                tabContents.forEach(c => c.classList.remove('active'));
-
-                // 添加新的活动状态
-                item.classList.add('active');
-                const tabId = item.dataset.tab;
-                document.getElementById(tabId).classList.add('active');
-
-                // 根据标签页加载对应内容
-                if (tabId === 'order-history') {
-                    renderOrders();
-                } else if (tabId === 'downloaded-resources') {
-                    renderDownloads();
-                }
-            });
-        });
-    }
-
-    // 初始化搜索功能
-    function initSearchFunction() {
-        const searchInput = document.querySelector('.search-box input');
-        if (!searchInput) return;
-
-        // 添加输入事件监听
-        searchInput.addEventListener('input', debounce(function(e) {
-            const searchTerm = e.target.value.toLowerCase().trim();
-            const filteredOrders = searchOrders(searchTerm);
-            renderOrders(filteredOrders);
-        }, 300));
-    }
-
-    // 搜索订单功能
-    function searchOrders(searchTerm) {
-        if (!searchTerm) {
-            return learningData.orders;
-        }
-
-        return learningData.orders.filter(order => {
-            return (
-                order.id.toLowerCase().includes(searchTerm) ||
-                order.title.toLowerCase().includes(searchTerm) ||
-                order.date.includes(searchTerm) ||
-                order.status.toLowerCase().includes(searchTerm) ||
-                order.price.includes(searchTerm)
-            );
-        });
-    }
-
-    // 修改渲染订单函数，接收订单数据作为参数
     function renderOrders(orders) {
         const ordersList = document.querySelector('.orders-list');
         if (!ordersList) return;
@@ -160,47 +37,141 @@ document.addEventListener('DOMContentLoaded', function() {
             ordersList.innerHTML = `
                 <div class="no-results">
                     <div class="no-results-icon">🔍</div>
-                    <div class="no-results-text">未找到相关订单</div>
+                    <div class="no-results-text">No Orders Found</div>
                 </div>
             `;
             return;
         }
 
-        ordersList.innerHTML = orders.map(order => `
+        ordersList.innerHTML = orders.map((order, index) => `
             <div class="order-item">
                 <div class="order-info">
                     <div class="order-header">
-                        <span class="order-id">订单号：${order.id}</span>
-                        <span class="order-status ${order.status === '已完成' ? 'completed' : ''}">${order.status}</span>
+                        <span class="order-id">Order ID: ${order.id}</span>
+                        <span class="order-status ${order.status === 'Completed' ? 'completed' : ''}">${order.status}</span>
                     </div>
                     <h3 class="order-title">${order.title}</h3>
                     <div class="order-meta">
-                        <span class="order-price">￥${order.price}</span>
-                        <span class="order-date">${order.date}</span>
+                        <div class="order-details">
+                            <span class="order-price">${order.price}</span>
+                        </div>
+                        <button class="delete-btn" onclick="deleteOrder(${index})">Delete</button>
                     </div>
                 </div>
             </div>
         `).join('');
     }
 
-    // 防抖函数
-    function debounce(func, wait) {
-        let timeout;
-        return function(...args) {
-            clearTimeout(timeout);
-            timeout = setTimeout(() => func.apply(this, args), wait);
-        };
+    // 搜索订单功能
+    function searchOrders(searchTerm) {
+        const orders = JSON.parse(localStorage.getItem('purchaseHistory')) || [];
+        if (!searchTerm) {
+            return orders;
+        }
+
+        return orders.filter(order => {
+            const searchString = searchTerm.toLowerCase();
+            const orderString = (
+                (order.id || '') +
+                (order.title || '') +
+                (order.status || '') +
+                (order.price || '')
+            ).toLowerCase();
+            
+            return orderString.includes(searchString);
+        });
     }
 
-    // 生成随机头像
-    function generateRandomAvatar() {
-        const seed = Math.random().toString(36).substring(7);
-        const avatarUrl = `https://api.dicebear.com/7.x/avataaars/svg?seed=${seed}`;
-        const avatarImg = document.getElementById('userAvatar');
-        if (avatarImg) {
-            avatarImg.src = avatarUrl;
-        }
+    // 初始化搜索功能
+    function initSearchFunction() {
+        const searchInput = document.querySelector('.search-box input');
+        if (!searchInput) return;
+
+        searchInput.addEventListener('input', function(e) {
+            const searchTerm = e.target.value;
+            const filteredOrders = searchOrders(searchTerm);
+            renderOrders(filteredOrders);
+        });
     }
+
+    // 删除订单记录
+    window.deleteOrder = function(index) {
+        const orders = JSON.parse(localStorage.getItem('purchaseHistory')) || [];
+        orders.splice(index, 1);
+        localStorage.setItem('purchaseHistory', JSON.stringify(orders));
+        renderOrders(orders);
+    };
+
+    // 渲染下载记录
+    function renderDownloads() {
+        const downloadsList = document.querySelector('.downloads-list');
+        if (!downloadsList) return;
+
+        const downloads = JSON.parse(localStorage.getItem('downloadHistory')) || [];
+
+        if (downloads.length === 0) {
+            downloadsList.innerHTML = `
+                <div class="no-results">
+                    <div class="no-results-icon">🔍</div>
+                    <div class="no-results-text">No Downloads Found</div>
+                </div>
+            `;
+            return;
+        }
+
+        // 按日期降序排序
+        downloads.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+        downloadsList.innerHTML = downloads.map(download => `
+            <div class="download-item">
+                <div class="download-info">
+                    <h3 class="download-title">${download.title}</h3>
+                    <div class="download-meta">
+                        <div class="download-details">
+                            <span class="download-type">${download.type}</span>
+                            <span class="download-size">${download.size}</span>
+                            <span class="download-date">Downloaded on: ${download.date}</span>
+                        </div>
+                        <button class="redownload-btn" onclick="redownloadResource('${download.id}')">
+                            <i class="icon-download"></i>
+                            Download Again
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    // 下载资源功能
+    window.redownloadResource = function(resourceId) {
+        // 从 localStorage 获取资源信息
+        const downloads = JSON.parse(localStorage.getItem('downloadHistory')) || [];
+        const resource = downloads.find(d => d.id === resourceId);
+        
+        if (!resource) {
+            alert('Resource not found');
+            return;
+        }
+
+        // 创建下载链接
+        const link = document.createElement('a');
+        link.href = resource.downloadUrl;
+        link.download = resource.title;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+
+        // 更新下载时间
+        const updatedDownloads = downloads.map(d => {
+            if (d.id === resourceId) {
+                return { ...d, date: new Date().toISOString().split('T')[0] };
+            }
+            return d;
+        });
+
+        localStorage.setItem('downloadHistory', JSON.stringify(updatedDownloads));
+        renderDownloads();
+    };
 
     // 绑定标签页切换事件
     function bindTabEvents() {
@@ -210,19 +181,57 @@ document.addEventListener('DOMContentLoaded', function() {
         menuItems.forEach(item => {
             item.addEventListener('click', () => {
                 menuItems.forEach(i => i.classList.remove('active'));
-                tabContents.forEach(c => c.classList.remove('active'));
+                tabContents.forEach(c => {
+                    c.style.display = 'none';
+                });
 
                 item.classList.add('active');
                 const tabId = item.dataset.tab;
-                document.getElementById(tabId).classList.add('active');
+                document.getElementById(tabId).style.display = 'block';
 
                 if (tabId === 'order-history') {
-                    renderOrders(learningData.orders);
+                    const orders = JSON.parse(localStorage.getItem('purchaseHistory')) || [];
+                    renderOrders(orders);
                 } else if (tabId === 'downloaded-resources') {
                     renderDownloads();
                 }
             });
         });
+    }
+
+    // 显示用户信息
+    function displayUserInfo() {
+        const userInfo = JSON.parse(localStorage.getItem('currentUser'));
+        const userNameElement = document.querySelector('.user-name');
+        
+        if (userInfo && userInfo.email && userNameElement) {
+            // 可以选择只显示邮箱用户名部分（去掉@后面的内容）
+            const username = userInfo.email.split('@')[0];
+            userNameElement.textContent = username;
+        } else {
+            // 如果没有登录信息，重定向到登录页面
+            window.location.href = 'login.html';
+        }
+    }
+
+    // 添加登出功能
+    function initLogout() {
+        const logoutBtn = document.querySelector('.logout-btn');
+        if (logoutBtn) {
+            logoutBtn.addEventListener('click', function() {
+                // 清除用户登录信息
+                localStorage.removeItem('currentUser');
+                // 清除其他相关数据（如果需要）
+                localStorage.removeItem('purchaseHistory');
+                localStorage.removeItem('downloadHistory');
+                
+                // 显示登出提示
+                alert('Successfully logged out!');
+                
+                // 重定向到登录页面
+                window.location.href = 'login.html';
+            });
+        }
     }
 
     // 初始化页面

@@ -183,15 +183,34 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // 下载资源
-    function downloadResource(resourceId) {
+    window.downloadResource = function(resourceId) {
         const resource = resourcesData[resourceId];
-        if (!resource) return;
-
-        // 检查用户是否登录
-        if (!isUserLoggedIn()) {
-            showLoginPrompt();
+        if (!resource) {
+            alert('Resource not found');
             return;
         }
+
+        // 添加到下载历史
+        const downloadHistory = JSON.parse(localStorage.getItem('downloadHistory')) || [];
+        const downloadRecord = {
+            id: resource.id,
+            title: resource.title,
+            type: resource.typeName,
+            size: resource.size,
+            date: new Date().toISOString().split('T')[0],
+            downloadUrl: resource.downloadUrl
+        };
+
+        // 检查是否已存在相同资源
+        const existingIndex = downloadHistory.findIndex(d => d.id === resource.id);
+        if (existingIndex !== -1) {
+            downloadHistory[existingIndex] = downloadRecord;
+        } else {
+            downloadHistory.push(downloadRecord);
+        }
+
+        // 保存到 localStorage
+        localStorage.setItem('downloadHistory', JSON.stringify(downloadHistory));
 
         // 创建下载链接
         const link = document.createElement('a');
@@ -201,8 +220,18 @@ document.addEventListener('DOMContentLoaded', function() {
         link.click();
         document.body.removeChild(link);
 
-        // 更新下载次数
-        updateDownloadCount(resourceId);
+        alert('Download started! Check download history in My Learning page.');
+    };
+
+    // 为所有下载按钮添加点击事件
+    function initDownloadButtons() {
+        const downloadBtns = document.querySelectorAll('.download-btn');
+        downloadBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const resourceId = this.closest('.resource-card').dataset.resourceId;
+                downloadResource(resourceId);
+            });
+        });
     }
 
     // 检查用户是否登录

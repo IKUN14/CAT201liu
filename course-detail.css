@@ -13,15 +13,33 @@ body {
 
 /* 导航栏样式 */
 .navbar {
+    background: white;
+    border-bottom: 1px solid #eee;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    padding: 1rem 0;
+}
+
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 5%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 5%;
-    background: #fff;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-img {
+    height: 40px;
+    width: auto;
+}
+
+.logo span {
     font-size: 1.2rem;
     font-weight: bold;
     color: #333;

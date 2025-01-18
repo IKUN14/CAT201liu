@@ -10,42 +10,6 @@ body {
     background-color: #f5f7fa;
 }
 
-/* 导航栏样式 */
-.navbar {
-    background: white;
-    border-bottom: 1px solid #eee;
-}
-
-.nav-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 15px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo {
-    font-size: 18px;
-    color: #333;
-}
-
-.nav-links {
-    display: flex;
-    gap: 30px;
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: #666;
-    font-size: 14px;
-}
-
-.nav-links a:hover,
-.nav-links a.active {
-    color: #0066ff;
-}
-
 .user-actions {
     display: flex;
     gap: 20px;

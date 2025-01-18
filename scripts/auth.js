@@ -1,7 +1,14 @@
 // Define valid user credentials
 const validUsers = [
-    { email: "admin@example.com", password: "admin123" },
-    { email: "user1@example.com", password: "pass123" },
+    { email: "admin@example.com", password: "123456" },
+    { email: "user1@example.com", password: "123456" },
+    { email: "user2@example.com", password: "123456" },
+    { email: "user3@example.com", password: "123456" },
+    { email: "user4@example.com", password: "123456" },
+    { email: "user5@example.com", password: "123456" },
+    { email: "user6@example.com", password: "123456" },
+    { email: "user6@example.com", password: "123456" },
+
   ];
   
   document.addEventListener('DOMContentLoaded', function() {
@@ -20,6 +27,8 @@ const validUsers = [
               );
   
               if (isValidUser) {
+                  // 保存登录用户信息到 localStorage
+                  localStorage.setItem('currentUser', JSON.stringify({ email }));
                   alert("Login successful!");
                   window.location.href = 'index.html';
               } else {

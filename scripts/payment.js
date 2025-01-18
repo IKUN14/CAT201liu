@@ -7,31 +7,39 @@ document.addEventListener('DOMContentLoaded', function() {
         // 更新页面信息
         document.getElementById('courseImage').src = selectedCourse.image;
         document.getElementById('courseTitle').textContent = selectedCourse.title;
-        document.getElementById('courseInstructor').textContent = `讲师：${selectedCourse.instructor}`;
+        document.getElementById('courseInstructor').textContent = `Instructor: ${selectedCourse.instructor}`;
         document.getElementById('coursePrice').textContent = selectedCourse.price;
         document.getElementById('totalPrice').textContent = selectedCourse.price;
     } else {
-        console.error('未找到课程信息');
-        // 可以选择重定向回课程页面
-        // window.location.href = 'courses.html';
+        console.error('Course information not found');
     }
 });
 
 // 处理支付
 function processPay() {
-    const selectedPayment = document.querySelector('input[name="payment"]:checked').value;
     const courseInfo = JSON.parse(localStorage.getItem('selectedCourse'));
-    
-    // 这里可以添加实际的支付逻辑
-    console.log('支付方式:', selectedPayment);
-    console.log('课程信息:', courseInfo);
-    
-    // 模拟支付过程
-    alert(`正在使用${selectedPayment === 'alipay' ? '支付宝' : '微信支付'}支付...`);
-    
-    // 支付成功后可以清除localStorage中的课程信息
-    // localStorage.removeItem('selectedCourse');
-    
-    // 可以添加跳转到支付成功页面或我的课程页面的逻辑
-    // window.location.href = 'payment-success.html';
+    if (courseInfo) {
+        // 获取历史购买记录
+        let purchaseHistory = JSON.parse(localStorage.getItem('purchaseHistory')) || [];
+        
+        // 生成订单ID
+        const orderId = `${courseInfo.id}-${purchaseHistory.length + 1}`;
+        
+        // 添加新购买记录，移除购买时间
+        const newOrder = {
+            id: orderId,
+            title: courseInfo.title,
+            price: courseInfo.price,
+            status: 'Completed'
+        };
+        
+        purchaseHistory.push(newOrder);
+        // 更新历史记录到 localStorage
+        localStorage.setItem('purchaseHistory', JSON.stringify(purchaseHistory));
+        
+        alert('Payment successful! Course has been added to your history.');
+        window.location.href = 'learning.html';
+    } else {
+        alert('Course information not found!');
+    }
 } 

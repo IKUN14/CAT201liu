@@ -8,13 +8,16 @@
 body {
     font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
     line-height: 1.6;
+    padding-top: 60px; 
 }
 
 /* 导航栏样式 */
 .navbar {
-    background: white;
+    background: #fff;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    position: sticky;
+    padding: 10px 0;
+    position: fixed;
+    width: 100%;
     top: 0;
     z-index: 1000;
 }
@@ -22,15 +25,27 @@ body {
 .nav-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 15px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0 20px;
 }
 
 .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.logo-img {
+    height: 32px;
+    width: auto;
+}
+
+.logo span {
     font-size: 20px;
-    font-weight: bold;
+    font-weight: 500;
     color: #333;
 }
 
@@ -43,10 +58,12 @@ body {
     text-decoration: none;
     color: #666;
     font-size: 16px;
-    transition: color 0.3s;
+    font-weight: 500;
+    transition: color 0.3s ease;
 }
 
-.nav-links a:hover {
+.nav-links a:hover,
+.nav-links a.active {
     color: #0066ff;
 }
 

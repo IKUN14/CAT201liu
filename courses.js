@@ -9,7 +9,7 @@ const coursesData = [
         instructor: "Mr. Zhang",
         price: "299",
         rating: 4.8,
-        image: "images/python.jpg",
+        image: "images/homepage3.png",
         level: "beginner"
     },
     {
@@ -20,7 +20,7 @@ const coursesData = [
         instructor: "Mr. Li",
         price: "399",
         rating: 4.9,
-        image: "images/java.jpg",
+        image: "images/coursejava1.png",
         level: "intermediate"
     },
     {
@@ -31,7 +31,7 @@ const coursesData = [
         instructor: "Mr. Wang",
         price: "499",
         rating: 4.7,
-        image: "images/cpp.jpg",
+        image: "images/coursecpp.png",
         level: "advanced"
     },
     {
@@ -42,7 +42,7 @@ const coursesData = [
         instructor: "Mr. Zhao",
         price: "349",
         rating: 4.6,
-        image: "images/javascript.jpg",
+        image: "images/coursejs.png",
         level: "intermediate"
     },
     {
@@ -53,7 +53,7 @@ const coursesData = [
         instructor: "Mr. Sun",
         price: "399",
         rating: 4.8,
-        image: "images/golang.jpg",
+        image: "images/coursegolang.png",
         level: "intermediate"
     },
 
@@ -66,7 +66,7 @@ const coursesData = [
         instructor: "Mr. Liu",
         price: "349",
         rating: 4.7,
-        image: "images/ui-design.jpg",
+        image: "images/courseui1.png",
         level: "beginner"
     },
     {
@@ -77,7 +77,7 @@ const coursesData = [
         instructor: "Mr. Chen",
         price: "399",
         rating: 4.8,
-        image: "images/mobile-ui.jpg",
+        image: "images/courseui2.png",
         level: "intermediate"
     },
     {
@@ -88,7 +88,7 @@ const coursesData = [
         instructor: "Mr. Zhou",
         price: "299",
         rating: 4.6,
-        image: "images/web-design.jpg",
+        image: "images/coursewebdesign.png",
         level: "beginner"
     },
     {
@@ -99,7 +99,7 @@ const coursesData = [
         instructor: "Mr. Wu",
         price: "499",
         rating: 4.9,
-        image: "images/3d-modeling.jpg",
+        image: "images/course3dmodeling.png",
         level: "advanced"
     },
     {
@@ -110,7 +110,7 @@ const coursesData = [
         instructor: "Mr. Guo",
         price: "299",
         rating: 4.7,
-        image: "images/graphic-design.jpg",
+        image: "images/coursegraphicdesign.png",
         level: "intermediate"
     }
 ];

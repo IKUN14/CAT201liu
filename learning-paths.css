@@ -1,0 +1,190 @@
+.path-container {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.path-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.path-header h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 16px;
+}
+
+.path-header p {
+    font-size: 1.2rem;
+    color: #666;
+}
+
+.paths-grid {
+    display: grid;
+    gap: 40px;
+}
+
+.path-card {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+}
+
+.path-info {
+    padding: 30px;
+}
+
+.path-info h2 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 12px;
+}
+
+.path-desc {
+    color: #666;
+    font-size: 1.1rem;
+    margin-bottom: 24px;
+    line-height: 1.5;
+}
+
+.path-stats {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+.path-stats span {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #666;
+    font-size: 0.95rem;
+}
+
+.view-details-btn {
+    background: #1a73e8;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.view-details-btn:hover {
+    background: #1557b0;
+}
+
+.path-details {
+    display: none;
+    padding: 30px;
+    background: #f8f9fa;
+    border-top: 1px solid #eee;
+}
+
+.path-details.active {
+    display: block;
+}
+
+.path-details h3 {
+    font-size: 1.3rem;
+    color: #333;
+    margin-bottom: 24px;
+}
+
+.course-list {
+    display: grid;
+    gap: 20px;
+}
+
+.course-item {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.course-order {
+    width: 32px;
+    height: 32px;
+    background: #1a73e8;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.course-content h4 {
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.course-content p {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+    .path-stats {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .path-info {
+        padding: 20px;
+    }
+    
+    .path-details {
+        padding: 20px;
+    }
+} 
+
+/* 返回按钮样式 */
+.back-button {
+    position: absolute;
+    left: 40px;
+    top: 100px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #666;
+    font-size: 0.95rem;
+}
+
+.back-button:hover {
+    background: #f5f5f5;
+    color: #333;
+}
+
+.back-icon {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23666666"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>') no-repeat center;
+    background-size: contain;
+}
+
+/* 响应式适配 */
+@media (max-width: 768px) {
+    .back-button {
+        left: 20px;
+        top: 80px;
+        padding: 8px 12px;
+    }
+} 

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources - Learning Platform</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="resources.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">Learning Platform</div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="courses.html">Courses</a>
+                <a href="resources.html" class="active">Resources</a>
+                <a href="learning.html">My Learning</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Optimized Header Search Area -->
+    <div class="hero-section">
+        <div class="hero-content">
+            <h1>Extensive Learning Resources</h1>
+            <p>Curated quality resources to enhance your learning</p>
+            <div class="search-container">
+                <div class="search-box">
+                    <i class="search-icon">🔍</i>
+                    <input 
+                        type="search" 
+                        id="resourceSearch" 
+                        placeholder="Search for resources..."
+                        autocomplete="off"
+                    >
+                    <button class="clear-search" id="clearSearch">✕</button>
+                </div>
+                <button class="search-button">Search</button>
+            </div>
+            <div class="search-suggestions" id="searchSuggestions"></div>
+        </div>
+    </div>
+
+    <!-- Optimized Resource Tags -->
+    <div class="tags-section">
+        <div class="tags-container">
+            <button class="tag active" data-type="all">
+                <i class="tag-icon all"></i>
+                <span>All Resources</span>
+                <span class="tag-count">328</span>
+            </button>
+            <button class="tag" data-type="ebook">
+                <i class="tag-icon book"></i>
+                <span>E-Books</span>
+                <span class="tag-count">126</span>
+            </button>
+            <button class="tag" data-type="video">
+                <span class="tag-icon video-icon"></span>
+                Video Tutorials
+            </button>
+            <button class="tag" data-type="code">
+                <span class="tag-icon code-icon"></span>
+                Source Code
+            </button>
+            <button class="tag" data-type="tool">
+                <span class="tag-icon tool-icon"></span>
+                Tools
+            </button>
+        </div>
+    </div>
+
+    <!-- Optimized Resource List -->
+    <div class="resources-container">
+        <div class="resources-header">
+            <div class="resources-filter">
+                <span class="filter-label">Sort by:</span>
+                <button class="filter-btn active" data-sort="newest">
+                    <i class="sort-icon newest"></i>Newest
+                </button>
+                <div class="filter-divider"></div>
+                <button class="filter-btn" data-sort="hot">
+                    <i class="sort-icon hot"></i>Popular
+                </button>
+                <div class="filter-divider"></div>
+                <button class="filter-btn" data-sort="rating">
+                    <i class="sort-icon rating"></i>Top Rated
+                </button>
+            </div>
+        </div>
+        
+        <div class="resources-grid">
+            <div class="resource-card">
+                <div class="resource-badge">Featured</div>
+                <div class="resource-type">
+                    <i class="resource-icon book"></i>
+                    <span>E-Book</span>
+                </div>
+                <div class="resource-content">
+                    <h3>Python Programming: From Beginner to Pro</h3>
+                    <p class="resource-desc">The best Python tutorial for beginners with practical examples</p>
+                    <div class="resource-meta">
+                        <div class="meta-left">
+                            <span class="download-count"><i class="icon-download"></i>12,345</span>
+                            <span class="rating"><i class="icon-star"></i>4.8</span>
+                        </div>
+                        <div class="meta-right">
+                            <span class="resource-size">25MB</span>
+                        </div>
+                    </div>
+                    <button class="download-btn">
+                        <i class="icon-download"></i>
+                        Download Now
+                    </button>
+                </div>
+            </div>
+            <!-- More resource cards -->
+        </div>
+    </div>
+
+    <!-- Resource Details Modal -->
+    <div class="resource-modal" id="resourceModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Resource Details</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="resource-info">
+                    <h3 class="resource-title"></h3>
+                    <div class="resource-meta">
+                        <span class="resource-type-tag"></span>
+                        <span class="resource-size"></span>
+                    </div>
+                    <div class="resource-stats">
+                        <span class="downloads"></span>
+                        <span class="rating"></span>
+                    </div>
+                    <p class="resource-description"></p>
+                </div>
+                <div class="download-section">
+                    <div class="download-info">
+                        <p>File Size: <span class="file-size"></span></p>
+                        <p>Last Updated: <span class="update-time"></span></p>
+                        <p>Downloads: <span class="download-count"></span></p>
+                    </div>
+                    <button class="download-btn" id="downloadBtn">
+                        <i class="icon-download"></i>
+                        Download Now
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="resources.js"></script>
+</html> 

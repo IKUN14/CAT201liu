@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Go Programming in Practice - Online Learning Platform</title>
+    <link rel="stylesheet" href="../course-detail.css">
+</head>
+<body>
+    <!-- Navigation bar -->
+    <nav class="navbar">
+        <div class="logo">Learning Platform</div>
+        <div class="nav-links">
+            <a href="../index.html">Home</a>
+            <a href="../courses.html">Courses</a>
+            <a href="../resources.html">Resources</a>
+            <a href="../learning.html">My Learning</a>
+        </div>
+    </nav>
+
+    <!-- Back button -->
+    <button class="back-button" onclick="window.location.href='../courses.html'">Back to Courses</button>
+
+    <!-- Course details -->
+    <div class="course-container">
+        <div class="course-header">
+            <div class="course-info">
+                <h1>Go Programming in Practice</h1>
+                <div class="meta-info">
+                    <span class="instructor">Instructor: Mr. Sun</span>
+                    <span class="rating">⭐ 4.8</span>
+                    <span class="students">1,567 Students Enrolled</span>
+                </div>
+                <p class="description">
+                    This course covers everything from Go basics to high-concurrency programming,
+                    using practical projects to help you master Go development skills.
+                </p>
+            </div>
+            <div class="course-action">
+                <div class="price">RM399</div>
+                <button class="enroll-btn" onclick="redirectToPayment()">Enroll Now</button>
+                <button class="try-btn" data-video-url="">Free Trial</button>
+            </div>
+        </div>
+
+        <div class="course-content">
+            <h2>Course Outline</h2>
+            <div class="chapter-list">
+                <div class="chapter">
+                    <h3>Chapter 1: Go Fundamentals</h3>
+                    <ul>
+                        <li>
+                            <span class="lesson-title">1.1 Language Features and Environment Setup</span>
+                            <span class="duration">40 mins</span>
+                        </li>
+                        <li>
+                            <span class="lesson-title">1.2 Concurrency Programming Basics</span>
+                            <span class="duration">60 mins</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="chapter">
+                    <h3>Chapter 2: Web Development in Practice</h3>
+                    <ul>
+                        <li>
+                            <span class="lesson-title">2.1 Introduction to Gin Framework</span>
+                            <span class="duration">75 mins</span>
+                        </li>
+                        <li>
+                            <span class="lesson-title">2.2 Microservice Architecture</span>
+                            <span class="duration">90 mins</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/course-detail.js"></script>
+    <script>
+        function redirectToPayment() {
+            const courseInfo = {
+                id: 'golang-5',
+                title: 'Go Programming in Practice',
+                instructor: 'Mr. Sun',
+                price: 'RM399',
+                image: '../images/golang.jpg'
+            };
+            
+            localStorage.setItem('selectedCourse', JSON.stringify(courseInfo));
+            console.log('Course information saved:', courseInfo);
+            window.location.href = '../payment.html?courseId=golang-5';
+        }
+    </script>
+</body>
+</html> 

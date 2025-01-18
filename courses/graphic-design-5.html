@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graphic Design Practical Course - Online Learning Platform</title>
+    <link rel="stylesheet" href="../course-detail.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">Learning Platform</div>
+        <div class="nav-links">
+            <a href="../index.html">Home</a>
+            <a href="../courses.html">Courses</a>
+            <a href="../resources.html">Resources</a>
+            <a href="../learning.html">My Learning</a>
+        </div>
+    </nav>
+
+    <!-- Back Button -->
+    <button class="back-button" onclick="window.location.href='../courses.html'">Back to Courses</button>
+
+    <!-- Course Details -->
+    <div class="course-container">
+        <div class="course-header">
+            <div class="course-info">
+                <h1>Graphic Design Practical Course</h1>
+                <div class="meta-info">
+                    <span class="instructor">Instructor: Mr. Guo</span>
+                    <span class="rating">⭐ 4.7</span>
+                    <span class="students">1,345 Students Enrolled</span>
+                </div>
+                <p class="description">
+                    This course covers all aspects of graphic design, from design theory to practical projects,
+                    helping you master professional graphic design skills.
+                </p>
+            </div>
+            <div class="course-action">
+                <div class="price">RM299</div>
+                <button class="enroll-btn" onclick="redirectToPayment()">Enroll Now</button>
+                <button class="try-btn" data-video-url="">Free Preview</button>
+            </div>
+        </div>
+
+        <div class="course-content">
+            <h2>Course Outline</h2>
+            <div class="chapter-list">
+                <div class="chapter">
+                    <h3>Chapter 1: Graphic Design Fundamentals</h3>
+                    <ul>
+                        <li>
+                            <span class="lesson-title">1.1 Design Principles and Composition</span>
+                            <span class="duration">50 minutes</span>
+                        </li>
+                        <li>
+                            <span class="lesson-title">1.2 Typography and Layout</span>
+                            <span class="duration">65 minutes</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="chapter">
+                    <h3>Chapter 2: Design Tools Application</h3>
+                    <ul>
+                        <li>
+                            <span class="lesson-title">2.1 Photoshop Basics</span>
+                            <span class="duration">80 minutes</span>
+                        </li>
+                        <li>
+                            <span class="lesson-title">2.2 Illustrator Techniques</span>
+                            <span class="duration">85 minutes</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/course-detail.js"></script>
+    <script>
+        function redirectToPayment() {
+            const courseInfo = {
+                id: 'graphic-design-5',
+                title: 'Graphic Design Practical Course',
+                instructor: 'Mr. Guo',
+                price: 'RM299',
+                image: '../images/graphic-design.jpg'
+            };
+            localStorage.setItem('selectedCourse', JSON.stringify(courseInfo));
+            console.log('Course information saved:', courseInfo);
+            window.location.href = '../payment.html?courseId=graphic-design-5';
+        }
+    </script>
+</body>
+</html> 

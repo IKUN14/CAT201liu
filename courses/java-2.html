@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Core Technologies Advanced Course - Online Learning Platform</title>
+    <link rel="stylesheet" href="../course-detail.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="logo">Learning Platform</div>
+        <div class="nav-links">
+            <a href="../index.html">Home</a>
+            <a href="../courses.html">Courses</a>
+            <a href="../resources.html">Resources</a>
+            <a href="../learning.html">My Learning</a>
+        </div>
+    </nav>
+
+    <!-- 添加返回按钮 -->
+    <button class="back-button" onclick="window.location.href='../courses.html'">Back to Courses</button>
+
+    <!-- 课程详情 -->
+    <div class="course-container">
+        <!-- 课程头部信息 -->
+        <div class="course-header">
+            <div class="course-info">
+                <h1>Java Core Technologies Advanced Course</h1>
+                <div class="meta-info">
+                    <span class="instructor">Instructor: Mr. Li</span>
+                    <span class="rating">⭐ 4.9</span>
+                    <span class="students">2,156 Students Enrolled</span>
+                </div>
+                <p class="description">
+                    This course covers Java core technologies in depth, including Object-Oriented Programming,
+                    Collections Framework, Multi-threading, and Network Programming, helping you master Java
+                    development skills.
+                </p>
+            </div>
+            <div class="course-action">
+                <div class="price">RM399</div>
+                <button class="enroll-btn" onclick="redirectToPayment()">Enroll Now</button>
+                <button class="try-btn" data-video-url="">Free Trial</button>
+            </div>
+        </div>
+
+        <!-- 课程大纲 -->
+        <div class="course-content">
+            <h2>Course Outline</h2>
+            <div class="chapter-list">
+                <div class="chapter">
+                    <h3>Chapter 1: Java Basics Review</h3>
+                    <ul>
+                        <li>
+                            <span class="lesson-title">1.1 Java Development Environment Setup</span>
+                            <span class="duration">30 mins</span>
+                        </li>
+                        <li>
+                            <span class="lesson-title">1.2 Object-Oriented Programming Basics</span>
+                            <span class="duration">45 mins</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="chapter">
+                    <h3>Chapter 2: Java Core Technologies</h3>
+                    <ul>
+                        <li>
+                            <span class="lesson-title">2.1 Collections Framework in Detail</span>
+                            <span class="duration">60 mins</span>
+                        </li>
+                        <li>
+                            <span class="lesson-title">2.2 Multi-threading Programming</span>
+                            <span class="duration">90 mins</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="../js/course-detail.js"></script>
+<script>
+    function redirectToPayment() {
+        const courseInfo = {
+            id: 'java-2',
+            title: 'Java Core Technologies Advanced Course',
+            instructor: 'Mr. Li',
+            price: 'RM399',
+            image: '../images/java.jpg'
+        };
+        
+        localStorage.setItem('selectedCourse', JSON.stringify(courseInfo));
+        console.log('Course information saved:', courseInfo);
+        window.location.href = '../payment.html?courseId=java-2';
+    }
+</script>
+</html> 

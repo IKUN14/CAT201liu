@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Paths - Online Learning Platform</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="learning-paths.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">Learning Platform</div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="courses.html">Courses</a>
+                <a href="resources.html">Resources</a>
+                <a href="#">My Learning</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Path Details Page -->
+    <div class="path-container">
+        <div class="path-header">
+            <div class="back-button" onclick="window.location.href='index.html'">
+                <i class="back-icon"></i>
+                <span>Back to Home</span>
+            </div>
+            <h1>Learning Paths</h1>
+            <p>Systematic learning plans to help you achieve your career goals</p>
+        </div>
+
+        <div class="paths-grid">
+            <!-- Frontend Development Path -->
+            <div class="path-card" data-path="frontend">
+                <div class="path-info">
+                    <h2>Frontend Developer</h2>
+                    <p class="path-desc">A complete learning path from beginner to frontend expert</p>
+                    <div class="path-stats">
+                        <span><i class="icon-course"></i>5 Core Courses</span>
+                        <span><i class="icon-time"></i>3 Months to Complete</span>
+                        <span><i class="icon-level"></i>Beginner to Advanced</span>
+                    </div>
+                    <button class="view-details-btn" onclick="showPathDetails('frontend')">View Detailed Courses</button>
+                </div>
+                <div class="path-details" id="frontend-details">
+                    <h3>Course List</h3>
+                    <div class="course-list">
+                        <div class="course-item">
+                            <span class="course-order">1</span>
+                            <div class="course-content">
+                                <h4>HTML5 + CSS3 Basics</h4>
+                                <p>Master the basics of web development and build a frontend mindset</p>
+                            </div>
+                        </div>
+                        <div class="course-item">
+                            <span class="course-order">2</span>
+                            <div class="course-content">
+                                <h4>JavaScript Core Programming</h4>
+                                <p>Dive deep into JavaScript language features and programming concepts</p>
+                            </div>
+                        </div>
+                        <div class="course-item">
+                            <span class="course-order">3</span>
+                            <div class="course-content">
+                                <h4>Vue.js Practical Development</h4>
+                                <p>Master a mainstream frontend framework to enhance development efficiency</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- UI Design Path -->
+            <div class="path-card" data-path="ui-design">
+                <div class="path-info">
+                    <h2>UI Designer</h2>
+                    <p class="path-desc">Systematically master UI design skills to become a design expert</p>
+                    <div class="path-stats">
+                        <span><i class="icon-course"></i>4 Core Courses</span>
+                        <span><i class="icon-time"></i>2 Months to Complete</span>
+                        <span><i class="icon-level"></i>Beginner to Intermediate</span>
+                    </div>
+                    <button class="view-details-btn" onclick="showPathDetails('ui-design')">View Detailed Courses</button>
+                </div>
+                <div class="path-details" id="ui-design-details">
+                    <h3>Course List</h3>
+                    <div class="course-list">
+                        <div class="course-item">
+                            <span class="course-order">1</span>
+                            <div class="course-content">
+                                <h4>UI Design Basics</h4>
+                                <p>Master design principles and tool usage methods</p>
+                            </div>
+                        </div>
+                        <div class="course-item">
+                            <span class="course-order">2</span>
+                            <div class="course-content">
+                                <h4>Mobile UI Design Practice</h4>
+                                <p>Dive deep into mobile application interface design</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="learning-paths.js"></script>
+</html> 

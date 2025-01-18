@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirm Payment - Learning Platform</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles/payment.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">Learning Platform</div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="courses.html">Courses</a>
+                <a href="resources.html">Resources</a>
+                <a href="#">My Learning</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="back-link">
+            <button class="back-button" onclick="handleBack()">
+                <span class="back-icon">←</span>
+                <span>Back to Course</span>
+            </button>
+        </div>
+
+        <div class="payment-container">
+            <div class="payment-header">
+                <h1>Confirm Order</h1>
+            </div>
+            
+            <div class="order-details">
+                <div class="course-info">
+                    <img id="courseImage" src="" alt="Course Image" class="course-thumbnail">
+                    <div class="course-meta">
+                        <h2 id="courseTitle"></h2>
+                        <p id="courseInstructor"></p>
+                    </div>
+                    <div class="course-price">
+                        <span id="coursePrice"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="payment-methods">
+                <h3>Select Payment Method</h3>
+                <div class="payment-options">
+                    <label class="payment-option">
+                        <input type="radio" name="payment" value="alipay" checked>
+                        <img src="images/alipay.png" alt="Alipay">
+                        <span>Alipay</span>
+                    </label>
+                    <label class="payment-option">
+                        <input type="radio" name="payment" value="wechat">
+                        <img src="images/wechat.png" alt="WeChat Pay">
+                        <span>WeChat Pay</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="payment-summary">
+                <div class="total-amount">
+                    <span>Total Amount:</span>
+                    <span class="price" id="totalPrice"></span>
+                </div>
+                <button class="pay-button" onclick="processPay()">Pay Now</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts/payment.js"></script>
+    <script>
+        function handleBack() {
+            if (document.querySelector('.payment-methods input:checked')) {
+                const confirmed = confirm('Are you sure you want to go back? Unpaid order information will be lost');
+                if (confirmed) {
+                    const courseInfo = JSON.parse(localStorage.getItem('selectedCourse'));
+                    window.location.href = `courses/${courseInfo.id}.html`;
+                }
+            } else {
+                const courseInfo = JSON.parse(localStorage.getItem('selectedCourse'));
+                window.location.href = `courses/${courseInfo.id}.html`;
+            }
+        }
+    </script>
+</body>
+</html> 

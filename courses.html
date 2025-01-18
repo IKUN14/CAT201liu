@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses - Learning Platform</title>
+    <link rel="stylesheet" href="styles.css">
+    
+
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">Learning Platform</div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="courses.html" class="active">Courses</a>
+                <a href="resources.html">Resources</a>
+                <a href="learning.html">My Learning</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <!-- 左侧筛选栏 -->
+        <aside class="filters">
+            <!-- 课程分类 -->
+            <section class="filter-group">
+                <h3>Course Categories</h3>
+                <div class="radio-group">
+                    <label>
+                        <input type="radio" name="category" value="all" checked>
+                        <span>All</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="category" value="programming">
+                        <span>Programming Development</span>
+                    </label>
+                    <div class="sub-categories programming-sub" style="margin-left: 20px; display: none;">
+                        <label>
+                            <input type="checkbox" name="subcategory" value="Python">
+                            <span>Python</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" name="subcategory" value="Java">
+                            <span>Java</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" name="subcategory" value="C++">
+                            <span>C++</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" name="subcategory" value="JavaScript">
+                            <span>JavaScript</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" name="subcategory" value="Go">
+                            <span>Go</span>
+                        </label>
+                    </div>
+                    <label>
+                        <input type="radio" name="category" value="design">
+                        <span>Design Creation</span>
+                    </label>
+                    <div class="sub-categories design-sub" style="margin-left: 20px; display: none;">
+                        <label>
+                            <input type="checkbox" name="subcategory" value="UI Design">
+                            <span>UI Design</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" name="subcategory" value="Web Design">
+                            <span>Web Design</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" name="subcategory" value="Graphic Design">
+                            <span>Graphic Design</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" name="subcategory" value="3D Modeling">
+                            <span>3D Modeling</span>
+                        </label>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 难度等级 -->
+            <section class="filter-group">
+                <h3>Difficulty Level</h3>
+                <div class="checkbox-group">
+                    <label>
+                        <input type="checkbox" name="level" value="beginner">
+                        <span>Beginner</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="level" value="intermediate">
+                        <span>Intermediate</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="level" value="advanced">
+                        <span>Advanced</span>
+                    </label>
+                </div>
+            </section>
+
+            <!-- 课程价格 -->
+            <section class="filter-group">
+                <h3>Course Price</h3>
+                <div class="checkbox-group">
+                    <label>
+                        <input type="checkbox" name="price" value="free">
+                        <span>Free</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="price" value="paid">
+                        <span>Paid</span>
+                    </label>
+                </div>
+            </section>
+        </aside>
+
+        <!-- 主要内容区 -->
+        <main class="courses-section">
+            <h2>All Courses</h2>
+            <!-- 搜索和排序 -->
+            <div class="search-sort">
+                <div class="search-box">
+                    <input type="search" placeholder="Search Courses...">
+                    <button class="search-button">Search</button>
+                </div>
+                <select class="sort-select">
+                    <option value="default">Most Popular</option>
+                    <option value="priceAsc">Price: Low to High</option>
+                    <option value="priceDesc">Price: High to Low</option>
+                </select>
+            </div>
+
+            <!-- 课程网格 -->
+            <div id="courseGrid" class="course-grid">
+                <!-- 课程卡片会通过 JavaScript 动态生成 -->
+            </div>
+        </main>
+    </div>
+
+    <script src="courses.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // 获取URL参数中的分类
+        const urlParams = new URLSearchParams(window.location.search);
+        const category = urlParams.get('category');
+        
+        // 所有课程元素
+        const courseCards = document.querySelectorAll('.course-card');
+        
+        if (category) {
+            // 显示分类标题
+            const categoryTitle = document.querySelector('.courses-section h2');
+            switch(category) {
+                case 'programming':
+                    categoryTitle.textContent = 'Programming Development Courses';
+                    break;
+                case 'design':
+                    categoryTitle.textContent = 'Design Creation Courses';
+                    break;
+                // ... 其他分类 ...
+            }
+            
+            // 过滤课程
+            courseCards.forEach(card => {
+                if (category === 'programming') {
+                    // 编程相关课程的关键词
+                    const programmingKeywords = ['Python', 'Java', 'JavaScript', 'C++', 'Go'];
+                    const courseTitle = card.querySelector('.course-title').textContent;
+                    const isProgramming = programmingKeywords.some(keyword => 
+                        courseTitle.includes(keyword)
+                    );
+                    card.style.display = isProgramming ? 'block' : 'none';
+                }
+                // ... 其他分类的过滤逻辑 ...
+            });
+        } else {
+            // 没有分类参数时显示所有课程
+            courseCards.forEach(card => card.style.display = 'block');
+        }
+    });
+    </script>
+
+    <script>
+    // 在页面加载完成后执行
+    window.onload = function() {
+        // 获取URL中的category参数
+        const urlParams = new URLSearchParams(window.location.search);
+        const category = urlParams.get('category');
+        
+        // 如果存在category参数
+        if (category === 'programming') {
+            // 获取所有课程卡片
+            const allCourses = document.querySelectorAll('.course-card');
+            
+            // 遍历所有课程卡片
+            allCourses.forEach(course => {
+                // 获取课程标题
+                const title = course.querySelector('.course-title').textContent.toLowerCase();
+                
+                // 定义编程类课程的关键词
+                const programmingKeywords = ['python', 'java', 'javascript', 'c++', 'go', 'programming', 'development'];
+                
+                // 检查课程标题是否包含编程关键词
+                const isProgrammingCourse = programmingKeywords.some(keyword => 
+                    title.includes(keyword.toLowerCase())
+                );
+                
+                // 显示或隐藏课程卡片
+                course.style.display = isProgrammingCourse ? 'block' : 'none';
+            });
+            
+            // 更新标题
+            const sectionTitle = document.querySelector('.courses-section h2');
+            if (sectionTitle) {
+                sectionTitle.textContent = 'Programming Development Courses';
+            }
+        }
+    }
+    </script>
+</body>
+</html> 

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Learning Platform</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">Learning Platform</div>
+            <div class="nav-links">
+                <a href="index.html" class="active">Home</a>
+                <a href="courses.html">Courses</a>
+                <a href="resources.html">Resources</a>
+                <a href="learning.html">My Learning</a>
+            </div>
+
+        </div>
+    </nav>
+
+    <!-- Optimized Search Section -->
+    <div class="hero-section">
+        <h1>Explore New Learning Horizons</h1>
+        <p>Curated quality courses to help you achieve your career goals</p>
+        <div class="search-container">
+            <form id="searchForm" action="courses.html" method="GET">
+                <input 
+                    type="search" 
+                    name="keyword" 
+                    id="searchInput" 
+                    placeholder="Search for courses of interest..." 
+                    required
+                >
+                <button type="submit" class="search-button">Search Now</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Optimized Featured Categories Section -->
+    <section class="featured-categories">
+        <h2>Featured Categories</h2>
+        <div class="category-grid">
+            <a href="courses.html?category=programming" class="category-item programming">
+                <div class="category-icon">
+                    <img src="images/programming.png" alt="Programming Development">
+                </div>
+                <div class="category-info">
+                    <h3>Programming Development</h3>
+                    <p>Master popular programming languages and start your tech journey</p>
+                    <div class="category-stats">
+                        <span>50+ Courses</span>
+                        <span>100,000+ Learners</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="courses.html?category=design" class="category-item design">
+                <div class="category-icon">
+                    <img src="images/design.png" alt="Design Creation">
+                </div>
+                <div class="category-info">
+                    <h3>Design Creation</h3>
+                    <p>Learn design skills and spark creative inspiration</p>
+                    <div class="category-stats">
+                        <span>30+ Courses</span>
+                        <span>50,000+ Learners</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Optimized Popular Courses -->
+    <section class="popular-courses">
+        <h2>Popular Courses</h2>
+        <div class="course-cards">
+            <!-- Python Course Card -->
+            <a href="courses/python-1.html" class="course-card">
+                <div class="course-badge">Highly Recommended</div>
+                <img src="images/python.jpg" alt="Python from Beginner to Expert" class="course-image">
+                <div class="course-info">
+                    <h3 class="course-title">Python: From Beginner to Advanced</h3>
+                    <p class="course-instructor">Instructor: Mr. Zhang</p>
+                    <div class="course-stats">
+                        <span class="student-count">12,345 students enrolled</span>
+                        <span class="course-rating">⭐ 4.8</span>
+                    </div>
+                    <div class="course-meta">
+                        <span class="course-price">¥299</span>
+                        <span class="course-tag">Beginner</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- UI Design Course Card -->
+            <a href="courses/ui-design-1.html" class="course-card">
+                <div class="course-badge">New Course</div>
+                <img src="images/ui-design.jpg" alt="UI Design Basics" class="course-image">
+                <div class="course-info">
+                    <h3 class="course-title">UI Design: From Beginner to Master</h3>
+                    <p class="course-instructor">Instructor: Mr. Li</p>
+                    <div class="course-stats">
+                        <span class="student-count">8,956 students enrolled</span>
+                        <span class="course-rating">⭐ 4.6</span>
+                    </div>
+                    <div class="course-meta">
+                        <span class="course-price">¥199</span>
+                        <span class="course-tag">Beginner</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- New Learning Path Recommendations -->
+    <section class="learning-paths">
+        <h2>Learning Paths</h2>
+        <div class="path-cards">
+            <div class="path-card">
+                <h3>Frontend Developer</h3>
+                <p class="path-desc">A complete learning path from beginner to frontend expert</p>
+                <div class="path-stats">
+                    <span>5 Core Courses</span>
+                    <span>3 Months to Complete</span>
+                </div>
+                <button class="path-btn" onclick="window.location.href='learning-paths.html'">View Details</button>
+            </div>
+            <div class="path-card">
+                <h3>UI Designer</h3>
+                <p class="path-desc">Systematically master UI design skills and become a design expert</p>
+                <div class="path-stats">
+                    <span>4 Core Courses</span>
+                    <span>2 Months to Complete</span>
+                </div>
+                <button class="path-btn">View Details</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer with contact info -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <ul>
+                    <li><i class="icon-email"></i> Email: support@learning.com</li>
+                    <li><i class="icon-phone"></i> Phone: +1 (888) 123-4567</li>
+                    <li><i class="icon-chat"></i> Live Chat: Available 24/7</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 Learning Platform. All Rights Reserved | Terms of Service | Privacy Policy</p>
+        </div>
+    </footer>
+</body>
+<script src="script.js"></script>
+</html> 

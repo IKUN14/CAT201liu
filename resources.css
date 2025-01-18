@@ -1,0 +1,497 @@
+/* 基础样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: #f5f7fa;
+}
+
+/* 导航栏样式 */
+.navbar {
+    background: white;
+    border-bottom: 1px solid #eee;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 18px;
+    color: #333;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #666;
+    font-size: 14px;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: #0066ff;
+}
+
+.user-actions {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.login-link,
+.register-link {
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.login-link {
+    color: #0066ff;
+}
+
+.register-link {
+    color: white;
+    background: #0066ff;
+    padding: 6px 16px;
+    border-radius: 4px;
+}
+
+.register-link:hover {
+    background: #0052cc;
+}
+
+/* 搜索区域样式 */
+.hero-section {
+    background: linear-gradient(135deg, #1a73e8 0%, #0d47a1 100%);
+    padding: 80px 20px;
+    text-align: center;
+    color: white;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 16px;
+    font-weight: 600;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+    opacity: 0.9;
+}
+
+.search-container {
+    position: relative;
+    max-width: 600px;
+    margin: 24px auto 0;
+    display: flex;
+    gap: 12px;
+}
+
+.search-box {
+    flex: 1;
+    position: relative;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.search-box:focus-within {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.search-icon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
+    font-size: 18px;
+}
+
+#resourceSearch {
+    width: 100%;
+    padding: 14px 40px 14px 44px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    color: #333;
+    background: transparent;
+}
+
+#resourceSearch:focus {
+    outline: none;
+}
+
+#resourceSearch::placeholder {
+    color: #999;
+}
+
+.clear-search {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #999;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 4px;
+    display: none;
+    border-radius: 50%;
+}
+
+.clear-search:hover {
+    background: #f5f5f5;
+    color: #666;
+}
+
+.search-button {
+    padding: 0 28px;
+    height: 48px;
+    border: none;
+    border-radius: 8px;
+    background: #00c853;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.search-button:hover {
+    background: #00a844;
+}
+
+/* 搜索建议下拉框 */
+.search-suggestions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border-radius: 8px;
+    margin-top: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: none;
+    z-index: 1000;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.suggestion-item {
+    padding: 12px 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.suggestion-item:hover {
+    background: #f5f7fa;
+}
+
+.suggestion-icon {
+    color: #666;
+    font-size: 16px;
+}
+
+.suggestion-text {
+    flex: 1;
+}
+
+.suggestion-type {
+    color: #999;
+    font-size: 12px;
+}
+
+/* 标签区域样式 */
+.tags-section {
+    position: sticky;
+    top: 0;
+    background: white;
+    z-index: 100;
+    border-bottom: 1px solid #eee;
+    padding: 16px 0;
+}
+
+.tags-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    gap: 20px;
+    padding: 0 20px;
+}
+
+.tag {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.tag-count {
+    background: rgba(0, 0, 0, 0.1);
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+}
+
+.tag.active {
+    background: #0066ff;
+    color: white;
+}
+
+/* 资源列表样式 */
+.resources-container {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+.resources-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.resource-card {
+    position: relative;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.resource-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.resource-info {
+    padding: 15px;
+}
+
+.resource-title {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.resource-description {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 12px;
+}
+
+.resource-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #999;
+    font-size: 14px;
+}
+
+.download-btn {
+    padding: 6px 20px;
+    background: #0066ff;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.resource-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: #ff3d00;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    
+    .search-container {
+        flex-direction: column;
+    }
+    
+    .resources-filter {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    
+    .nav-container {
+        padding: 10px 15px;
+    }
+    
+    .nav-links {
+        gap: 20px;
+    }
+    
+    .user-actions {
+        gap: 15px;
+    }
+    
+    .search-button {
+        height: 44px;
+    }
+} 
+
+/* 弹窗样式 */
+.resource-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.modal-content {
+    position: relative;
+    background: white;
+    width: 90%;
+    max-width: 600px;
+    margin: 50px auto;
+    border-radius: 12px;
+    overflow: hidden;
+    animation: modalShow 0.3s ease;
+}
+
+.modal-header {
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+}
+
+.modal-body {
+    padding: 24px;
+}
+
+.resource-info {
+    margin-bottom: 24px;
+}
+
+.resource-title {
+    font-size: 1.5rem;
+    margin-bottom: 16px;
+}
+
+.download-section {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.download-info {
+    margin-bottom: 20px;
+}
+
+.download-info p {
+    margin: 8px 0;
+    color: #666;
+}
+
+@keyframes modalShow {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+} 
+
+/* 排序区域样式 */
+.resources-header {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+.resources-filter {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.filter-label {
+    color: #666;
+    font-size: 14px;
+}
+
+.filter-btn {
+    padding: 6px 16px;
+    border: none;
+    background: none;
+    border-radius: 6px;
+    color: #666;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+    color: #1a73e8;
+    background: #f0f7ff;
+}
+
+.filter-btn.active {
+    color: #1a73e8;
+    background: #f0f7ff;
+    font-weight: 500;
+}
+
+/* 添加分隔线 */
+.filter-divider {
+    width: 1px;
+    height: 16px;
+    background: #eee;
+    margin: 0 8px;
+} 

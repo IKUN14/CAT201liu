@@ -1,11 +1,9 @@
 // 从 URL 参数获取课程信息
 document.addEventListener('DOMContentLoaded', function() {
-    // 从 localStorage 获取课程信息
     const selectedCourse = JSON.parse(localStorage.getItem('selectedCourse'));
     
     if (selectedCourse) {
-        // 更新页面信息
-        document.getElementById('courseImage').src = selectedCourse.image;
+        // 只更新文字信息
         document.getElementById('courseTitle').textContent = selectedCourse.title;
         document.getElementById('courseInstructor').textContent = `Instructor: ${selectedCourse.instructor}`;
         document.getElementById('coursePrice').textContent = selectedCourse.price;
